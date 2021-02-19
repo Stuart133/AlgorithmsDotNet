@@ -7,7 +7,7 @@ namespace AlgorithmsDotNet.Graphs.DataStructures
     /// <summary>
     /// A representation of a sparse directed graph
     /// </summary>
-    public class SparseDirectedGraph<TVertex>
+    public class SparseDirectedGraph<TVertex> : IGraph<TVertex>
     {
         private readonly IDictionary<TVertex, IList<Edge<TVertex>>> _adjacencyList;
 
@@ -24,10 +24,14 @@ namespace AlgorithmsDotNet.Graphs.DataStructures
             _adjacencyList.Add(vertex, new List<Edge<TVertex>>());
         }
 
-        public void AddEdge(Edge<TVertex> edge)
+        public void AddEdge(TVertex source, TVertex destination, int weight = 1)
         {
-            // TODO: Validate this isn't an existing edge - Not a multigraph
-            _adjacencyList[edge.Start].Add(edge);
+            _adjacencyList[source].Add(new Edge<TVertex>
+            {
+                Source = source,
+                Destination = destination,
+                Weight = weight
+            });
         }
     }
 }

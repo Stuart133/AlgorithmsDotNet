@@ -3,7 +3,7 @@
     public class Edge<TVertex>
     {
         public int Weight { get; init; }
-        public TVertex Start { get; init; }
-        public TVertex End { get; init; }
+        public TVertex Source { get; init; }
+        public TVertex Destination { get; init; }
     }
 }
