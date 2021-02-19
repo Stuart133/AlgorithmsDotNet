@@ -1,4 +1,5 @@
 ﻿using AlgorithmsDotNet.Graphs.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,7 +7,8 @@ namespace AlgorithmsDotNet.Graphs.Algorithms
 {
     public class BreadthFirstSearch
     {
-        public void Execute<TVertex>(IGraph<TVertex> graph, TVertex sourceVertex)
+        public IReadOnlyDictionary<TVertex, BFSVertexData> Execute<TVertex>(IGraph<TVertex> graph, TVertex sourceVertex)
+            where TVertex : IComparable<TVertex>, IEquatable<TVertex>
         {
             // Load graph vertices and create supplimental data structs
             var vertices = new Dictionary<TVertex, BFSVertexData>(graph.Vertices
@@ -34,6 +36,8 @@ namespace AlgorithmsDotNet.Graphs.Algorithms
                     }
                 }
             }
+
+            return vertices;
         }
     }
 

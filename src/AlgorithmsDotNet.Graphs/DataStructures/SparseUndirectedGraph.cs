@@ -22,6 +22,11 @@ namespace AlgorithmsDotNet.Graphs.DataStructures
         public int EdgeCount => _adjacencyList.Sum(v => v.Value.Count());
         public IEnumerable<TVertex> Vertices => _adjacencyList.Keys;
 
+        public IGraph<TVertex> CreateEmptyGraph()
+        {
+            return new SparseDirectedGraph<TVertex>();
+        }
+
         public IList<Edge<TVertex>> GetOutboundEdges(TVertex source)
         {
             return _adjacencyList[source];
@@ -30,6 +35,14 @@ namespace AlgorithmsDotNet.Graphs.DataStructures
         public void AddVertex(TVertex vertex)
         {
             _adjacencyList.Add(vertex, new List<Edge<TVertex>>());
+        }
+
+        public void AddVertices(IEnumerable<TVertex> vertices)
+        {
+            foreach(var vertex in vertices)
+            {
+                AddVertex(vertex);
+            }
         }
 
         public void AddEdge(TVertex source, TVertex destination, int weight = 1)
