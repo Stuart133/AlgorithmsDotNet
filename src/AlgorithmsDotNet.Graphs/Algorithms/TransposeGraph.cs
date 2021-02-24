@@ -6,6 +6,8 @@ namespace AlgorithmsDotNet.Graphs.Algorithms
     public class TransposeGraph<TVertex> : IGraphTransformAlgorithm<TVertex>
         where TVertex : IComparable<TVertex>, IEquatable<TVertex>
     {
+        public static IGraphTransformAlgorithm<TVertex> Algorithm => new TransposeGraph<TVertex>();
+
         /// <summary>
         /// Return a new graph with the edges reversed
         /// </summary>

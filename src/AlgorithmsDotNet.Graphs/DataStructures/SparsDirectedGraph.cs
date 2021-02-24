@@ -18,8 +18,13 @@ namespace AlgorithmsDotNet.Graphs.DataStructures
             _adjacencyList = new Dictionary<TVertex, IList<Edge<TVertex>>>();
         }
 
+        internal SparseDirectedGraph(IDictionary<TVertex, IList<Edge<TVertex>>> adjacencyList)
+        {
+            _adjacencyList = adjacencyList;
+        }
+
         public int VertexCount => _adjacencyList.Count;
-        public int EdgeCount => _adjacencyList.Sum(v => v.Value.Count());
+        public int EdgeCount => _adjacencyList.Sum(v => v.Value.Count);
         public IEnumerable<TVertex> Vertices => _adjacencyList.Keys;
 
         public IGraph<TVertex> CreateEmptyGraph()
@@ -39,7 +44,7 @@ namespace AlgorithmsDotNet.Graphs.DataStructures
 
         public void AddVertices(IEnumerable<TVertex> vertices)
         {
-            foreach(var vertex in vertices)
+            foreach (var vertex in vertices)
             {
                 AddVertex(vertex);
             }
