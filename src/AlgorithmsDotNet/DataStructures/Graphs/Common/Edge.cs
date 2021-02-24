@@ -1,4 +1,4 @@
-﻿namespace AlgorithmsDotNet.Graphs.DataStructures.Common
+﻿namespace AlgorithmsDotNet.DataStructures.Graphs.Common
 {
     public class Edge<TVertex>
     {

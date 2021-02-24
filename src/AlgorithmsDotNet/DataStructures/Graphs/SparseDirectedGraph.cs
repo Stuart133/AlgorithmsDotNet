@@ -1,9 +1,9 @@
-﻿using AlgorithmsDotNet.Graphs.DataStructures.Common;
+﻿using AlgorithmsDotNet.DataStructures.Graphs.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AlgorithmsDotNet.Graphs.DataStructures
+namespace AlgorithmsDotNet.DataStructures.Graphs
 {
     /// <summary>
     /// A representation of a sparse directed graph

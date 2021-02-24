@@ -1,12 +1,9 @@
-﻿using AlgorithmsDotNet.Graphs.Algorithms;
-using AlgorithmsDotNet.Graphs.DataStructures;
-using AlgorithmsDotNet.Graphs.DataStructures.Common;
+﻿using AlgorithmsDotNet.Algorithms.Graphs;
+using AlgorithmsDotNet.DataStructures.Graphs;
 using FsCheck;
 using FsCheck.Xunit;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace AlgorithmsDotNet.Graphs.Tests.Algorithms
+namespace AlgorithmsDotNet.Tests.Algorithms.Graphs
 {
     public class TransposeGraphTests
     {

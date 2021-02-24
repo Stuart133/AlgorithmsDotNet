@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmsDotNet.Graphs", "src\AlgorithmsDotNet.Graphs\AlgorithmsDotNet.Graphs.csproj", "{55B7151D-C52D-4D0C-95B5-BEFE2D3A6539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlgorithmsDotNet.Graphs", "src\AlgorithmsDotNet\AlgorithmsDotNet.csproj", "{55B7151D-C52D-4D0C-95B5-BEFE2D3A6539}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6FF45627-05B9-41DC-91DB-504BB6F4B8E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{ABDA9505-3A58-405B-B03B-8485585DE7A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsDotNet.Graphs.Tests", "test\AlgorithmsDotNet.Graphs.Tests\AlgorithmsDotNet.Graphs.Tests.csproj", "{829649B7-E947-4016-800D-5011848EDF99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsDotNet.Graphs.Tests", "test\AlgorithmsDotNet.Tests\AlgorithmsDotNet.Tests.csproj", "{829649B7-E947-4016-800D-5011848EDF99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

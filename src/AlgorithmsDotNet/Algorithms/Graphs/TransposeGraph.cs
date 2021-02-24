@@ -1,7 +1,7 @@
-﻿using AlgorithmsDotNet.Graphs.DataStructures;
+﻿using AlgorithmsDotNet.DataStructures.Graphs;
 using System;
 
-namespace AlgorithmsDotNet.Graphs.Algorithms
+namespace AlgorithmsDotNet.Algorithms.Graphs
 {
     public class TransposeGraph<TVertex> : IGraphTransformAlgorithm<TVertex>
         where TVertex : IComparable<TVertex>, IEquatable<TVertex>
@@ -18,9 +18,9 @@ namespace AlgorithmsDotNet.Graphs.Algorithms
             var transpose = inputGraph.CreateEmptyGraph();
             transpose.AddVertices(inputGraph.Vertices);
 
-            foreach(var vertex in inputGraph.Vertices)
+            foreach (var vertex in inputGraph.Vertices)
             {
-                foreach(var edge in inputGraph.GetOutboundEdges(vertex))
+                foreach (var edge in inputGraph.GetOutboundEdges(vertex))
                 {
                     transpose.AddEdge(edge.Destination, edge.Source, edge.Weight);
                 }

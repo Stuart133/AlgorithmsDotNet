@@ -1,8 +1,8 @@
-﻿using AlgorithmsDotNet.Graphs.DataStructures.Common;
+﻿using AlgorithmsDotNet.DataStructures.Graphs.Common;
 using System;
 using System.Collections.Generic;
 
-namespace AlgorithmsDotNet.Graphs.DataStructures
+namespace AlgorithmsDotNet.DataStructures.Graphs
 {
     public interface IGraph<TVertex>
         where TVertex : IComparable<TVertex>, IEquatable<TVertex>

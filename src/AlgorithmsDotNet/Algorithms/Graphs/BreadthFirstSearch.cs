@@ -1,9 +1,9 @@
-﻿using AlgorithmsDotNet.Graphs.DataStructures;
+﻿using AlgorithmsDotNet.DataStructures.Graphs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AlgorithmsDotNet.Graphs.Algorithms
+namespace AlgorithmsDotNet.Algorithms.Graphs
 {
     public class BreadthFirstSearch
     {
@@ -12,7 +12,7 @@ namespace AlgorithmsDotNet.Graphs.Algorithms
         {
             // Load graph vertices and create supplimental data structs
             var vertices = new Dictionary<TVertex, BFSVertexData>(graph.Vertices
-                .Select(v => KeyValuePair.Create(v, new BFSVertexData())));            
+                .Select(v => KeyValuePair.Create(v, new BFSVertexData())));
 
             var vertexQueue = new Queue<TVertex>();
             vertexQueue.Enqueue(sourceVertex);
@@ -22,7 +22,7 @@ namespace AlgorithmsDotNet.Graphs.Algorithms
                 var vertex = vertexQueue.Dequeue();
 
                 // Check all the edges from the current vertex
-                foreach(var edge in graph.GetOutboundEdges(vertex))
+                foreach (var edge in graph.GetOutboundEdges(vertex))
                 {
                     // Get supplimental data for edge distination vertex
                     var destinationData = vertices[edge.Destination];
