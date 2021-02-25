@@ -20,9 +20,9 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public IEnumerable<T> SortAscending(IList<T> data)
+        public void SortAscending(IList<T> data)
         {
-            return data.HeapSortAscending();
+            data.HeapSortAscending();
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public IEnumerable<T> SortDescending(IList<T> data)
+        public void SortDescending(IList<T> data)
         {
-            return data.HeapSortDescending();
+            data.HeapSortDescending();
         }
     }
 
@@ -53,7 +53,7 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data">Data to be sorted</param>
-        /// <returns></returns>
+        /// <returns>The sorted data</returns>
         public static IEnumerable<T> HeapSortAscending<T>(this IEnumerable<T> data)
         {
             IHeap<T> heap = new MaxHeap<T>(data);
@@ -65,15 +65,18 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
             return heap.ToList();
         }
 
-        internal static IEnumerable<T> HeapSortAscending<T>(this IList<T> data)
+        /// <summary>
+        /// Sort data in place using a heap sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
+        public static void HeapSortAscending<T>(this IList<T> data)
         {
             IHeap<T> heap = new MaxHeap<T>(data);
             for (int i = heap.Count - 1; i > 0; i--)
             {
                 heap.Pop();
             }
-
-            return heap.ToList();
         }
 
         /// <summary>
@@ -93,15 +96,18 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
             return heap.ToList();
         }
 
-        internal static IEnumerable<T> HeapSortDescending<T>(this IList<T> data)
+        /// <summary>
+        /// Sort data in place using a heap sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
+        public static void HeapSortDescending<T>(this IList<T> data)
         {
             IHeap<T> heap = new MinHeap<T>(data);
             for (int i = heap.Count - 1; i > 0; i--)
             {
                 heap.Pop();
             }
-
-            return heap.ToList();
         }
     }
 }
