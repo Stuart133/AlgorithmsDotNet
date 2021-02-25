@@ -18,6 +18,20 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
             : base(MinHeapComparison(Comparer<T>.Default))
         {
             _data = data.ToList();
+            Count = _data.Count;
+            BuildHeap();
+        }
+
+        /// <summary>
+        /// Create a min heap with initial data using the default comparer 
+        /// This uses the data directly so will alter the passed in data
+        /// </summary>
+        /// <param name="data">Initial data</param>
+        public MinHeap(IList<T> data)
+            : base(MinHeapComparison(Comparer<T>.Default))
+        {
+            _data = data;
+            Count = _data.Count;
             BuildHeap();
         }
 

@@ -12,12 +12,27 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
     {
         /// <summary>
         /// Create a max heap with initial data using the default comparer
+        /// This method copies the passed in data to a new container so does not alter the passed in data
         /// </summary>
         /// <param name="data">Initial data</param>
         public MaxHeap(IEnumerable<T> data)
             : base(MaxHeapComparison(Comparer<T>.Default))
         {
             _data = data.ToList();
+            Count = _data.Count;
+            BuildHeap();
+        }
+
+        /// <summary>
+        /// Create a max heap with initial data using the default comparer 
+        /// This uses the data directly so will alter the passed in data
+        /// </summary>
+        /// <param name="data"></param>
+        public MaxHeap(IList<T> data)
+            : base(MaxHeapComparison(Comparer<T>.Default))
+        {
+            _data = data;
+            Count = _data.Count;
             BuildHeap();
         }
 

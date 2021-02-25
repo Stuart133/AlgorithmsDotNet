@@ -16,7 +16,7 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
         /// <summary>
         /// Gets the number of items contained in the heap
         /// </summary>
-        public int Count => _data.Count;
+        public int Count { get; protected set; }
         public bool IsReadOnly => false;
 
         protected Heap(Func<T, T, bool> comparisonPredicate)
@@ -26,7 +26,7 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
 
         protected void BuildHeap()
         {
-            for (int i = _data.Count / 2; i >= 0; i--)
+            for (int i = Count / 2; i >= 0; i--)
             {
                 Heapify(i);
             }
@@ -38,11 +38,11 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
             var rightIndex = GetRight(index);
             int indexToSwap = index;
 
-            if (leftIndex < _data.Count && _comparisonPredicate(_data[leftIndex], _data[index]))
+            if (leftIndex < Count && _comparisonPredicate(_data[leftIndex], _data[index]))
             {
                 indexToSwap = leftIndex;
             }
-            if (rightIndex < _data.Count && _comparisonPredicate(_data[rightIndex], _data[indexToSwap]))
+            if (rightIndex < Count && _comparisonPredicate(_data[rightIndex], _data[indexToSwap]))
             {
                 indexToSwap = rightIndex;
             }
@@ -95,9 +95,9 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
         {
             var value = _data[0];
 
-            // Move the top value to the end of the list and remove it
-            SwapValues(0, _data.Count - 1);
-            _data.RemoveAt(_data.Count - 1);
+            // Move the top value to the end of the list and reduce count (Leave the actual data there)
+            SwapValues(0, Count - 1);
+            Count--;
 
             // Maintain max heap property
             Heapify(0);
@@ -125,8 +125,9 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
         public void Add(T item)
         {
             _data.Add(item);
+            Count++;
 
-            var itemIndex = _data.Count - 1;
+            var itemIndex = Count - 1;
             var itemParentIndex = GetParent(itemIndex);
 
             while (_comparisonPredicate(item, _data[itemParentIndex]) && itemIndex != 0)
@@ -143,6 +144,7 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
         public void Clear()
         {
             _data.Clear();
+            Count = 0;
         }
 
         /// <summary>
@@ -180,8 +182,9 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
             }
 
             // Move the item to the end of the list and remove it
-            SwapValues(itemIndex, _data.Count - 1);
-            _data.RemoveAt(_data.Count - 1);
+            SwapValues(itemIndex, Count - 1);
+            _data.RemoveAt(Count - 1);
+            Count--;
 
             // Maintain max heap property
             Heapify(itemIndex);
