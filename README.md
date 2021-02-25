@@ -5,9 +5,10 @@ A general purpose algorithms and data structures library written entirely in C#.
 
 ### Done
 
-### In Progress
+- Binary Max Heap
+- Binary Min Heap
 
-- Heaps (Min & Max)
+### In Progress
 
 ### Planned
 
@@ -23,10 +24,11 @@ A general purpose algorithms and data structures library written entirely in C#.
 
 ### In Progress
 
+- Heap Sort
+
 ### Planned
 
 - Sorting
-  - Heap Sort
   - Merge Sort
   - Quick Sort
 
