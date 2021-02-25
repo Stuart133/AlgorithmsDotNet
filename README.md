@@ -23,15 +23,17 @@ A general purpose algorithms and data structures library written entirely in C#.
 
 ### Done
 
+- Sorting
+  - Heap Sort
+
 ### In Progress
 
-- Heap Sort
+- Quick Sort
 
 ### Planned
 
 - Sorting
   - Merge Sort
-  - Quick Sort
 
 # License
 
