@@ -5,22 +5,23 @@ using System.Linq;
 namespace AlgorithmsDotNet.DataStructures.Heaps
 {
     /// <summary>
-    /// A binary max heap data structure
+    /// A binary min heap data structure
     /// </summary>
     /// <typeparam name="T">Item stored in heap</typeparam>
-    public class MaxHeap<T> : Heap<T>
+    public class MinHeap<T> : Heap<T>
         where T : IComparable<T>
     {
-        public MaxHeap(IEnumerable<T> data)
-            : base(MaxHeapComparison)
+        public MinHeap(IEnumerable<T> data)
+            : base(MinHeapComparison)
         {
             _data = data.ToList();
             BuildHeap();
         }
 
-        private static bool MaxHeapComparison(T childItem, T item)
+        private static bool MinHeapComparison(T childItem, T item)
         {
-            return childItem.CompareTo(item) > 0;
+            var compare = childItem.CompareTo(item);
+            return childItem.CompareTo(item) < 0;
         }
     }
 }
