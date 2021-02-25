@@ -12,6 +12,7 @@ A general purpose algorithms and data structures library written entirely in C#.
 
 ### Planned
 
+- Linked Lists (Single & Double)
 - Priority Queues (Min & Max)
 - Hash Tables
 - Binary Search Trees

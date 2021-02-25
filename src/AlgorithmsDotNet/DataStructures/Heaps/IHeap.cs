@@ -8,7 +8,6 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IHeap<T> : ICollection<T>
-        where T : IComparable<T>
     {
         /// <summary>
         /// Returns the heap as a list

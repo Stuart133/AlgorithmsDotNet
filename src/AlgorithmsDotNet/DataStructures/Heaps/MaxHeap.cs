@@ -9,18 +9,33 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
     /// </summary>
     /// <typeparam name="T">Item stored in heap</typeparam>
     public class MaxHeap<T> : Heap<T>
-        where T : IComparable<T>
     {
+        /// <summary>
+        /// Create a max heap with initial data using the default comparer
+        /// </summary>
+        /// <param name="data">Initial data</param>
         public MaxHeap(IEnumerable<T> data)
-            : base(MaxHeapComparison)
+            : base(MaxHeapComparison(Comparer<T>.Default))
         {
             _data = data.ToList();
             BuildHeap();
         }
 
-        private static bool MaxHeapComparison(T childItem, T item)
+        /// <summary>
+        /// Create a max heap with initial data using supplied comparer
+        /// </summary>
+        /// <param name="data">Initial data</param>
+        /// <param name="comparer">Comparer used to make heap</param>
+        public MaxHeap(IEnumerable<T> data, IComparer<T> comparer)
+            : base(MaxHeapComparison(comparer))
         {
-            return childItem.CompareTo(item) > 0;
+            _data = data.ToList();
+            BuildHeap();
+        }
+        
+        private static Func<T, T, bool> MaxHeapComparison(IComparer<T> comparer)
+        {
+            return (childItem, item) => comparer.Compare(childItem, item) > 0;
         }
     }
 }

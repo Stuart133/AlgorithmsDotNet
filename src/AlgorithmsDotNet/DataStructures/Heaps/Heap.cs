@@ -9,7 +9,6 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
     /// </summary>
     /// <typeparam name="T">Item stored in heap</typeparam>
     public abstract class Heap<T> : IHeap<T>
-        where T : IComparable<T>
     {
         protected IList<T> _data;
         private Func<T, T, bool> _comparisonPredicate;

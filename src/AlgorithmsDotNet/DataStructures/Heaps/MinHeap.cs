@@ -9,19 +9,33 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
     /// </summary>
     /// <typeparam name="T">Item stored in heap</typeparam>
     public class MinHeap<T> : Heap<T>
-        where T : IComparable<T>
     {
+        /// <summary>
+        /// Create a max heap with initial data using the default comparer
+        /// </summary>
+        /// <param name="data">Initial data</param>
         public MinHeap(IEnumerable<T> data)
-            : base(MinHeapComparison)
+            : base(MinHeapComparison(Comparer<T>.Default))
         {
             _data = data.ToList();
             BuildHeap();
         }
 
-        private static bool MinHeapComparison(T childItem, T item)
+        /// <summary>
+        /// Create a min heap with initial data using supplied comparer
+        /// </summary>
+        /// <param name="data">Initial data</param>
+        /// <param name="comparer">Comparer used to make heap</param>
+        public MinHeap(IEnumerable<T> data, IComparer<T> comparer)
+            : base(MinHeapComparison(comparer))
         {
-            var compare = childItem.CompareTo(item);
-            return childItem.CompareTo(item) < 0;
+            _data = data.ToList();
+            BuildHeap();
+        }
+
+        private static Func<T, T, bool> MinHeapComparison(IComparer<T> comparer)
+        {
+            return (childItem, item) => comparer.Compare(childItem, item) < 0;
         }
     }
 }
