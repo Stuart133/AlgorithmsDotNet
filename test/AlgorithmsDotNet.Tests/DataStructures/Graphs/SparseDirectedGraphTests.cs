@@ -1,4 +1,4 @@
-﻿using AlgorithmsDotNet.Graphs.DataStructures;
+﻿using AlgorithmsDotNet.DataStructures.Graphs;
 using FsCheck;
 using FsCheck.Xunit;
 

@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace AlgorithmsDotNet.DataStructures.Heaps
 {
+    /// <summary>
+    /// A binary max heap data structure
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MaxHeap<T> : IHeap<T>
         where T : IComparable<T>
     {
@@ -21,7 +25,7 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
 
         private void BuildMaxHeap()
         {
-            for (int i = _data.Count / 2; i < 0; i--)
+            for (int i = _data.Count / 2; i >= 0; i--)
             {
                 MaxHeapify(i);
             }
@@ -33,11 +37,11 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
             var rightIndex = GetRight(index);
             int indexOfLargest;
 
-            if (leftIndex <= _data.Count && _data[leftIndex].CompareTo(_data[index]) > 0)
+            if (leftIndex < _data.Count && _data[leftIndex].CompareTo(_data[index]) > 0)
             {
                 indexOfLargest = leftIndex;
             }
-            else if (rightIndex <= _data.Count && _data[rightIndex].CompareTo(_data[index]) > 0)
+            else if (rightIndex < _data.Count && _data[rightIndex].CompareTo(_data[index]) > 0)
             {
                 indexOfLargest = rightIndex;
             }
@@ -81,6 +85,15 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
             _data[j] = tmp;
         }
 
+        #region IHeap Implementation
+
+        public IList<T> ToList()
+        {
+            return _data;
+        }
+
+        #endregion
+
         #region ICollection Implementation
 
         public void Add(T item)
@@ -110,12 +123,12 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _data.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _data.GetEnumerator();
         }
 
         #endregion
