@@ -35,33 +35,5 @@ namespace AlgorithmsDotNet.Tests.Algorithms.Sorting
             // Assert
             Assert.Equal(_data.OrderByDescending(i => i), sortedData);
         }
-
-        [Fact]
-        public void SortListAscending_SortsData_InPlace()
-        {
-            // Arrange
-            var listData = _data.ToList();
-            var heapSorter = new HeapSorter<int>();
-
-            // Act
-            heapSorter.SortAscending(listData);
-
-            // Assert
-            Assert.Equal(_data.OrderBy(i => i), listData);
-        }
-
-        [Fact]
-        public void SortListDescending_SortsData_InPlace()
-        {
-            // Arrange
-            var listData = _data.ToList();
-            var heapSorter = new HeapSorter<int>();
-
-            // Act
-            heapSorter.SortDescending(listData);
-
-            // Assert
-            Assert.Equal(_data.OrderByDescending(i => i), listData);
-        }
     }
 }

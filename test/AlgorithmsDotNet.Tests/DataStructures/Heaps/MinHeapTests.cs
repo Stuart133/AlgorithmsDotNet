@@ -1,4 +1,6 @@
 ﻿using AlgorithmsDotNet.DataStructures.Heaps;
+using FsCheck.Xunit;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -6,11 +8,8 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
 {
     public class MinHeapTests
     {
-        // TODO: Replace this with fsCheck generated data
-        private readonly int[] data = { 12, 34, 5, 323, 12, 5, 10 };
-
-        [Fact]
-        public void ClearMinHeap_LeavesCountOfZero()
+        [Property]
+        public void ClearMinHeap_LeavesCountOfZero(List<int> data)
         {
             // Arrange
             var heap = new MinHeap<int>(data);
@@ -22,8 +21,8 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
             Assert.Empty(heap);
         }
 
-        [Fact]
-        public void Heap_HasMinHeapProperty_AfterConstruction()
+        [Property]
+        public void Heap_HasMinHeapProperty_AfterConstruction(List<int> data)
         {
             // Act
             var heap = new MinHeap<int>(data);
@@ -32,8 +31,8 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
             HeapAssertions.IsMinHeap(heap);
         }
 
-        [Fact]
-        public void Add_MaintainsMinHeapProperty()
+        [Property]
+        public void Add_MaintainsMinHeapProperty(List<int> data)
         {
             // Arrange
             var heap = new MinHeap<int>(data);
@@ -42,12 +41,12 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
             heap.Add(56);
 
             // Assert
-            Assert.Equal(data.Length + 1, heap.Count);
+            Assert.Equal(data.Count() + 1, heap.Count);
             HeapAssertions.IsMinHeap(heap);
         }
 
-        [Fact]
-        public void Pop_MaintainsMinHeapProperty_AndReturnsLowestValue()
+        [Property]
+        public void Pop_MaintainsMinHeapProperty_AndReturnsLowestValue(List<int> data)
         {
             // Arrange
             var heap = new MinHeap<int>(data);
@@ -57,12 +56,12 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
 
             // Assert
             Assert.Equal(data.Min(), top);
-            Assert.Equal(data.Length - 1, heap.Count);
+            Assert.Equal(data.Count() - 1, heap.Count);
             HeapAssertions.IsMinHeap(heap);
         }
 
-        [Fact]
-        public void Peek_GetsLowestItem_AndDoesntChangeHeapSize()
+        [Property]
+        public void Peek_GetsLowestItem_AndDoesntChangeHeapSize(List<int> data)
         {
             // Arrange
             var heap = new MinHeap<int>(data);
@@ -72,12 +71,12 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
 
             // Assert
             Assert.Equal(data.Min(), top);
-            Assert.Equal(data.Length, heap.Count);
+            Assert.Equal(data.Count(), heap.Count);
             HeapAssertions.IsMinHeap(heap);
         }
 
-        [Fact]
-        public void RemoveValueInHeap_MaintainsMinHeapProperty_AndReturnsTrue()
+        [Property]
+        public void RemoveValueInHeap_MaintainsMinHeapProperty_AndReturnsTrue(List<int> data)
         {
             // Arrange
             var heap = new MinHeap<int>(data);
@@ -87,12 +86,12 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
 
             // Assert
             Assert.True(removed);
-            Assert.Equal(data.Length - 1, heap.Count);
+            Assert.Equal(data.Count() - 1, heap.Count);
             HeapAssertions.IsMinHeap(heap);
         }
 
-        [Fact]
-        public void RemoveValue_NotInHeap_ReturnsFalse()
+        [Property]
+        public void RemoveValue_NotInHeap_ReturnsFalse(List<int> data)
         {
             // Arrange
             var heap = new MinHeap<int>(data);
@@ -102,7 +101,7 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Heaps
 
             // Assert
             Assert.False(removed);
-            Assert.Equal(data.Length, heap.Count);
+            Assert.Equal(data.Count(), heap.Count);
             HeapAssertions.IsMinHeap(heap);
         }
     }

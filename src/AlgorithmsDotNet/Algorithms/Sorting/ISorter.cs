@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace AlgorithmsDotNet.Algorithms.Sorting
 {
@@ -13,10 +12,22 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         IEnumerable<T> SortAscending(IEnumerable<T> data);
 
         /// <summary>
+        /// Sort data ascending order
+        /// </summary>
+        /// <param name="data"></param>
+        IList<T> SortAscending(IList<T> data);
+
+        /// <summary>
         /// Sort data in descending order
         /// </summary>
         /// <param name="data"></param>
         /// <returns>The sorted data</returns>
         IEnumerable<T> SortDescending(IEnumerable<T> data);
+
+        /// <summary>
+        /// Sort data in descending order
+        /// </summary>
+        /// <param name="data"></param>
+        IList<T> SortDescending(IList<T> data);
     }
 }

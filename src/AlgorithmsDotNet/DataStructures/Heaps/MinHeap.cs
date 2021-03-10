@@ -15,11 +15,8 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
         /// </summary>
         /// <param name="data">Initial data</param>
         public MinHeap(IEnumerable<T> data)
-            : base(MinHeapComparison(Comparer<T>.Default))
+            : this(data.ToList())
         {
-            _data = data.ToList();
-            Count = _data.Count;
-            BuildHeap();
         }
 
         /// <summary>

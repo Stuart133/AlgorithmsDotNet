@@ -16,11 +16,8 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
         /// </summary>
         /// <param name="data">Initial data</param>
         public MaxHeap(IEnumerable<T> data)
-            : base(MaxHeapComparison(Comparer<T>.Default))
+            : this(data.ToList())
         {
-            _data = data.ToList();
-            Count = _data.Count;
-            BuildHeap();
         }
 
         /// <summary>

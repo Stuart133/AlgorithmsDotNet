@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AlgorithmsDotNet.DataStructures.Heaps
 {
@@ -194,12 +195,12 @@ namespace AlgorithmsDotNet.DataStructures.Heaps
 
         public IEnumerator<T> GetEnumerator()
         {
-            return _data.GetEnumerator();
+            return _data.Take(Count).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _data.GetEnumerator();
+            return _data.Take(Count).GetEnumerator();
         }
 
         #endregion

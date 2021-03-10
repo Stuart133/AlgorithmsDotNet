@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AlgorithmsDotNet.Algorithms.Sorting
 {
-    public class HeapSorter<T> : ISorter<T>, IInPlaceSorter<T>
+    public class HeapSorter<T> : ISorter<T>
     {
         /// <summary>
         /// Sort data using heapsort
@@ -20,9 +20,9 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void SortAscending(IList<T> data)
+        public IList<T> SortAscending(IList<T> data)
         {
-            data.HeapSortAscending();
+            return data.HeapSortAscending();
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public void SortDescending(IList<T> data)
+        public IList<T> SortDescending(IList<T> data)
         {
-            data.HeapSortDescending();
+            return data.HeapSortDescending();
         }
     }
 
@@ -70,13 +70,15 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data">Data to be sorted</param>
-        public static void HeapSortAscending<T>(this IList<T> data)
+        public static IList<T> HeapSortAscending<T>(this IList<T> data)
         {
             IHeap<T> heap = new MaxHeap<T>(data);
             for (int i = heap.Count - 1; i > 0; i--)
             {
                 heap.Pop();
             }
+
+            return heap.ToList();
         }
 
         /// <summary>
@@ -101,13 +103,15 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data">Data to be sorted</param>
-        public static void HeapSortDescending<T>(this IList<T> data)
+        public static IList<T> HeapSortDescending<T>(this IList<T> data)
         {
             IHeap<T> heap = new MinHeap<T>(data);
             for (int i = heap.Count - 1; i > 0; i--)
             {
                 heap.Pop();
             }
+
+            return heap.ToList();
         }
     }
 }
