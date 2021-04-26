@@ -16,7 +16,7 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         }
 
         /// <summary>
-        /// Sort data in place using heapsort
+        /// Sort data using heapsort
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -36,7 +36,7 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         }
 
         /// <summary>
-        /// Sort data in place using heapsort
+        /// Sort data using heapsort
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -66,7 +66,7 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         }
 
         /// <summary>
-        /// Sort data in place using a heap sort
+        /// Sort data using a heap sort
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data">Data to be sorted</param>
@@ -99,7 +99,7 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
         }
 
         /// <summary>
-        /// Sort data in place using a heap sort
+        /// Sort data using a heap sort
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data">Data to be sorted</param>

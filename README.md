@@ -12,9 +12,10 @@ A generic algorithms and data structures library written entirely in C#. This is
 
 ### In Progress
 
+- Linked Lists (Single & Double)
+
 ### Planned
 
-- Linked Lists (Single & Double)
 - Priority Queues (Min & Max)
 - Hash Tables
 - Hash Sets
@@ -34,10 +35,9 @@ A generic algorithms and data structures library written entirely in C#. This is
 
 - Sorting
   - Heap Sort
+  - Quick Sort
 
 ### In Progress
-
-- Quick Sort
 
 ### Planned
 
