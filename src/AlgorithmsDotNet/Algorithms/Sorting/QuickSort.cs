@@ -15,21 +15,41 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
             _comparer = comparer;
         }
 
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
         public IEnumerable<T> SortAscending(IEnumerable<T> data)
         {
             return Sort(data.ToList(), 0, data.Count() - 1, Compare);
         }
 
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
         public IList<T> SortAscending(IList<T> data)
         {
             return Sort(data, 0, data.Count - 1, Compare);
         }
 
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
         public IEnumerable<T> SortDescending(IEnumerable<T> data)
         {
             return Sort(data.ToList(), 0, data.Count() - 1, CompareDescending);
         }
 
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
         public IList<T> SortDescending(IList<T> data)
         {
             return Sort(data, 0, data.Count - 1, CompareDescending);
@@ -96,4 +116,54 @@ namespace AlgorithmsDotNet.Algorithms.Sorting
             return _comparer.Compare(x, y) >= 0;
         }
     }
+
+    public static class QuickSortExtensions
+    {
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
+        /// <returns>The sorted data</returns>
+        public static IEnumerable<T> QuickSortAscending<T>(this IEnumerable<T> data)
+        {
+            var sorter = new QuickSort<T>();
+            return sorter.SortAscending(data);
+        }
+
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
+        public static IList<T> QuickSortAscending<T>(this IList<T> data)
+        {
+            var sorter = new QuickSort<T>();
+            return sorter.SortAscending(data);
+        }
+
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
+        /// <returns></returns>
+        public static IEnumerable<T> QuickSortDescending<T>(this IEnumerable<T> data)
+        {
+            var sorter = new QuickSort<T>();
+            return sorter.SortDescending(data);
+        }
+
+        /// <summary>
+        /// Sort data using a quick sort
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Data to be sorted</param>
+        public static IList<T> QuickSortDescending<T>(this IList<T> data)
+        {
+            var sorter = new QuickSort<T>();
+            return sorter.SortDescending(data);
+        }
+    }
+
 }
