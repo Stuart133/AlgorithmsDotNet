@@ -1,4 +1,5 @@
 ﻿using AlgorithmsDotNet.Algorithms.Sorting;
+using FsCheck.Xunit;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -7,33 +8,30 @@ namespace AlgorithmsDotNet.Tests.Algorithms.Sorting
 {
     public class HeapSortTests
     {
-        // TODO: Replace this with fsCheck generated data
-        private readonly IEnumerable<int> _data = new int[] { 2354, 324, 35, 323, 12, -5, 110, 2, 2354, 1, 8, 567 };
-
-        [Fact]
-        public void SortAscending_SortsData()
+        [Property]
+        public void SortAscending_SortsData(List<int> data)
         {
             // Arrange
             var heapSorter = new HeapSorter<int>();
 
             // Act
-            var sortedData = heapSorter.SortAscending(_data);
+            var sortedData = heapSorter.SortAscending((IEnumerable<int>)data);
 
             // Assert
-            Assert.Equal(_data.OrderBy(i => i), sortedData);
+            Assert.Equal(data.OrderBy(i => i), sortedData);
         }
 
-        [Fact]
-        public void SortDescending_SortsData()
+        [Property]
+        public void SortDescending_SortsData(List<int> data)
         {
             // Arrange
             var heapSorter = new HeapSorter<int>();
 
             // Act
-            var sortedData = heapSorter.SortDescending(_data);
+            var sortedData = heapSorter.SortDescending((IEnumerable<int>)data);
 
             // Assert
-            Assert.Equal(_data.OrderByDescending(i => i), sortedData);
+            Assert.Equal(data.OrderByDescending(i => i), sortedData);
         }
     }
 }
