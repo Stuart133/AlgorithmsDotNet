@@ -111,12 +111,18 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            var current = _head;
+
+            while (current != null)
+            {
+                yield return current.Data;
+                current = current.Next;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
         private ListNode Traverse(int offset)
