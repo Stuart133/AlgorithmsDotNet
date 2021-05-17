@@ -59,7 +59,21 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public int IndexOf(T item)
         {
-            throw new NotImplementedException();
+            var current = _head;
+            var i = 0;
+
+            while (current != null)
+            {
+                if (EqualityComparer<T>.Default.Equals(current.Data, item))
+                {
+                    return i;
+                }
+
+                current = current.Next;
+                i++;
+            }
+
+            return -1;
         }
 
         public void Insert(int index, T item)
