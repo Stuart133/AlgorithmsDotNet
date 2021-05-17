@@ -9,7 +9,7 @@ namespace AlgorithmsDotNet.DataStructures.Lists
         private ListNode _head;
         private ListNode _tail;
 
-        public T this[int index] 
+        public T this[int index]
         {
             get => Traverse(index).Data;
             set => Traverse(index).Data = value;
@@ -49,7 +49,7 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public bool Contains(T item)
         {
-            return Find(item) != null;            
+            return Find(item) != null;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -64,12 +64,37 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            var insertAfter = Traverse(index);
+            var nextNode = insertAfter.Next;
+            var newNode = new ListNode(item)
+            {
+                Previous = insertAfter,
+                Next = nextNode
+            };
+
+            insertAfter.Next = newNode;
+            nextNode.Previous = newNode;
+
+            Count++;
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            // Find item - If not in list return false
+            var nodeToRemove = Find(item);
+            if (nodeToRemove is null)
+            {
+                return false;
+            }
+
+            var nextNode = nodeToRemove.Next;
+
+            // Cut out node to remove
+            nodeToRemove.Previous.Next = nextNode;
+            nextNode.Previous = nodeToRemove.Previous;
+
+            Count--;
+            return true;
         }
 
         public void RemoveAt(int index)
@@ -78,9 +103,10 @@ namespace AlgorithmsDotNet.DataStructures.Lists
             var nextNode = nodeToRemove.Next;
 
             // Cut out node to remove
-
             nodeToRemove.Previous.Next = nextNode;
             nextNode.Previous = nodeToRemove.Previous;
+
+            Count--;
         }
 
         public IEnumerator<T> GetEnumerator()
