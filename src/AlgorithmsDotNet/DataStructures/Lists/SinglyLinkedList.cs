@@ -9,7 +9,11 @@ namespace AlgorithmsDotNet.DataStructures.Lists
         private ListNode _head;
         private ListNode _tail;
 
-        public T this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public T this[int index] 
+        {
+            get => Traverse(index).Data;
+            set => Traverse(index).Data = value;
+        }
 
         public int Count { get; private set; }
 
@@ -26,6 +30,8 @@ namespace AlgorithmsDotNet.DataStructures.Lists
             {
                 _tail.Next = new ListNode(item);
             }
+
+            Count++;
         }
 
         public void Clear()
@@ -37,15 +43,21 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            var current = _head;
+            while (current != null)
+            {
+                if (EqualityComparer<T>.Default.Equals(current.Data, item))
+                {
+                    return true;
+                }
+
+                current = current.Next;
+            }
+
+            return false;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerator<T> GetEnumerator()
         {
             throw new NotImplementedException();
         }
@@ -70,9 +82,30 @@ namespace AlgorithmsDotNet.DataStructures.Lists
             throw new NotImplementedException();
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
+        }
+
+        private ListNode Traverse(int offset)
+        {
+            if (offset >= Count)
+            {
+                throw new InvalidOperationException("Index is out of bounds");
+            }
+
+            var current = _head;
+            for (int i = 0; i <= offset; i++)
+            {
+                current = current.Next;
+            }
+
+            return current;
         }
 
         private class ListNode
@@ -82,7 +115,7 @@ namespace AlgorithmsDotNet.DataStructures.Lists
                 Data = data;
             }
 
-            internal T Data { get; }
+            internal T Data { get; set; }
             internal ListNode Next { get; set; }
         }
     }
