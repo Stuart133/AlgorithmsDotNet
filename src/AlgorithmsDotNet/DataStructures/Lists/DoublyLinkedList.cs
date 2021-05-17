@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AlgorithmsDotNet.DataStructures.Lists
 {
-    public class SinglyLinkedList<T> : IList<T>
+    public class DoublyLinkedList<T> : IList<T>
     {
         private ListNode _head;
         private ListNode _tail;
@@ -28,7 +28,13 @@ namespace AlgorithmsDotNet.DataStructures.Lists
             }
             else
             {
-                _tail.Next = new ListNode(item);
+                var newNode = new ListNode(item)
+                {
+                    Previous = _tail
+                };
+
+                _tail.Next = newNode;
+                _tail = newNode;
             }
 
             Count++;
@@ -43,18 +49,7 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public bool Contains(T item)
         {
-            var current = _head;
-            while (current != null)
-            {
-                if (EqualityComparer<T>.Default.Equals(current.Data, item))
-                {
-                    return true;
-                }
-
-                current = current.Next;
-            }
-
-            return false;
+            return Find(item) != null;            
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -79,7 +74,13 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            var nodeToRemove = Traverse(index);
+            var nextNode = nodeToRemove.Next;
+
+            // Cut out node to remove
+
+            nodeToRemove.Previous.Next = nextNode;
+            nextNode.Previous = nodeToRemove.Previous;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -108,6 +109,22 @@ namespace AlgorithmsDotNet.DataStructures.Lists
             return current;
         }
 
+        private ListNode Find(T item)
+        {
+            var current = _head;
+            while (current != null)
+            {
+                if (EqualityComparer<T>.Default.Equals(current.Data, item))
+                {
+                    return current;
+                }
+
+                current = current.Next;
+            }
+
+            return null;
+        }
+
         private class ListNode
         {
             internal ListNode(T data)
@@ -117,6 +134,7 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
             internal T Data { get; set; }
             internal ListNode Next { get; set; }
+            internal ListNode Previous { get; set; }
         }
     }
 }

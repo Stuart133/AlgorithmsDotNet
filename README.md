@@ -12,7 +12,7 @@ A generic algorithms and data structures library written entirely in C#. This is
 
 ### In Progress
 
-- Linked Lists (Single & Double)
+- Doubly Linked List
 
 ### Planned
 
