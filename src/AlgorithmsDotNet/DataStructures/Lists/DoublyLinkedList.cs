@@ -152,7 +152,7 @@ namespace AlgorithmsDotNet.DataStructures.Lists
             }
 
             var current = _head;
-            for (int i = 0; i <= offset; i++)
+            for (int i = 0; i < offset; i++)
             {
                 current = current.Next;
             }
