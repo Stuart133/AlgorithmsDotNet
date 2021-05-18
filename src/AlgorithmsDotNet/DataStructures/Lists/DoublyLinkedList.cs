@@ -54,7 +54,12 @@ namespace AlgorithmsDotNet.DataStructures.Lists
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            var current = _head;
+            for (var i = arrayIndex; current != null; i++)
+            {
+                array[i] = current.Data;
+                current = current.Next;
+            }
         }
 
         public int IndexOf(T item)
