@@ -28,5 +28,32 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Lists
                 Assert.Equal(item, list[i - 1]);
             }
         }
+
+        [Property(Arbitrary = new Type[] { typeof(IntLists) })]
+        public void Reverse_ReversesList(List<int> data)
+        {
+            // Arrange
+            var list = new DoublyLinkedList<int>(data);
+            data.Reverse();
+
+            // Act
+            list.Reverse();
+
+            // Assert
+            Assert.Equal(list, data);
+        }
+
+        [Property]
+        public void Clear_List_LeavesAnEmptyList(List<int> data)
+        {
+            // Arrange
+            var list = new DoublyLinkedList<int>(data);
+
+            // Act
+            list.Clear();
+
+            // Assert
+            Assert.Empty(list);
+        }
     }
 }

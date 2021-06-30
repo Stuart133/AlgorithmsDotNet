@@ -9,10 +9,58 @@ namespace AlgorithmsDotNet.DataStructures.Lists
         private ListNode _head;
         private ListNode _tail;
 
+        public DoublyLinkedList() { }
+
+        public DoublyLinkedList(IList<T> data)
+        {
+            AddRange(data);
+        }
+
         public T this[int index]
         {
             get => Traverse(index).Data;
             set => Traverse(index).Data = value;
+        }
+
+        public void Reverse()
+        {
+            ListNode previous = null;
+            var current = _head;
+
+            while(current != null)
+            {
+                current.Previous = current.Next;
+                current.Next = previous;
+
+                previous = current;
+                current = current.Previous;
+            }
+
+            // Remember to update the head/tail
+            var head = _head;
+            _head = _tail;
+            _tail = head;
+        }
+
+        public bool HasCycle()
+        {
+            var hare = _head?.Next?.Next;
+            var tortoise = _head;
+
+            while (hare != null)
+            {
+                // If the fast pointer catches the slow one, there must be a cycle
+                if (hare == tortoise)
+                {
+                    return true;
+                }
+
+                hare = hare.Next?.Next;
+                tortoise = tortoise.Next;
+            }
+
+            // We've reached the end of the list so there can't be a cycle
+            return false;
         }
 
         public int Count { get; private set; }
@@ -38,6 +86,14 @@ namespace AlgorithmsDotNet.DataStructures.Lists
             }
 
             Count++;
+        }
+
+        public void AddRange(IEnumerable<T> items)
+        {
+            foreach(var item in items)
+            {
+                Add(item);
+            }
         }
 
         public void Clear()

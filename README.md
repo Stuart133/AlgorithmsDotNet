@@ -4,6 +4,8 @@ A generic algorithms and data structures library written entirely in C#. This is
 
 ## Data Structures
 
+- Doubly Linked List
+
 ### Done
 
 - Heap
@@ -12,7 +14,7 @@ A generic algorithms and data structures library written entirely in C#. This is
 
 ### In Progress
 
-- Doubly Linked List
+
 
 ### Planned
 
@@ -36,6 +38,9 @@ A generic algorithms and data structures library written entirely in C#. This is
 - Sorting
   - Heap Sort
   - Quick Sort
+- Linked Lists
+  - Reverse 
+  - Detect Cycle
 
 ### In Progress
 
@@ -43,15 +48,13 @@ A generic algorithms and data structures library written entirely in C#. This is
 
 - Compression
   - Huffman Coding
-- Linked Lists
-  - Reverse
-  - Detect Cycle
-  - Detect Merge Point
 - Sorting
   - Merge Sort
   - k-way Merge
   - Radix Sort
   - Bucket Sort
+- Linked Lists
+  - Detect Merge Point
 - Graphs
   - Elementary
     - BFS
