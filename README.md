@@ -14,7 +14,8 @@ A generic algorithms and data structures library written entirely in C#. This is
 
 ### In Progress
 
-
+- Trees
+  - Binary Search Trees
 
 ### Planned
 
@@ -22,7 +23,6 @@ A generic algorithms and data structures library written entirely in C#. This is
 - Hash Tables
 - Hash Sets
 - Trees
-  - Binary Search Trees
   - Red-Black Trees
   - AVL Trees
   - B-Trees
