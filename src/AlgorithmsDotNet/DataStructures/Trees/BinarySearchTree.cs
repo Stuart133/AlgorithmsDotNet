@@ -61,9 +61,15 @@ namespace AlgorithmsDotNet.DataStructures.Trees
         {
             if (root != null)
             {
-                InOrderWalk(root.Left);
+                foreach(var node in InOrderWalk(root.Left))
+                {
+                    yield return node;
+                }
                 yield return root.Value;
-                InOrderWalk(root.Right);
+                foreach (var node in InOrderWalk(root.Right))
+                {
+                    yield return node;
+                }
             }
         }
 
