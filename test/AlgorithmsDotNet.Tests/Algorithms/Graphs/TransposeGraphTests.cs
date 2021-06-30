@@ -11,7 +11,7 @@ namespace AlgorithmsDotNet.Tests.Algorithms.Graphs
         public Property TransposeGraph_HasSameNumberOfEdgesAndVertices(SparseDirectedGraph<int> graph)
         {
             // Act
-            var transponse = TransposeGraph<int>.Algorithm.Execute(graph);
+            var transponse = graph.Transpose();
 
             // Property
             return (transponse.VertexCount == graph.VertexCount)

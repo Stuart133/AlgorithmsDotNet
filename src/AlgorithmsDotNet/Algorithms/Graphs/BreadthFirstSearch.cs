@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace AlgorithmsDotNet.Algorithms.Graphs
 {
-    public class BreadthFirstSearch
+    public static class BreadthFirstSearchGraph
     {
-        public IReadOnlyDictionary<TVertex, BFSVertexData> Execute<TVertex>(IGraph<TVertex> graph, TVertex sourceVertex)
+        public static IReadOnlyDictionary<TVertex, BFSVertexData> BreadthFirstSearch<TVertex>(this IGraph<TVertex> graph, TVertex sourceVertex)
             where TVertex : IComparable<TVertex>, IEquatable<TVertex>
         {
             // Load graph vertices and create supplimental data structs

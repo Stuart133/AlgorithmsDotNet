@@ -3,17 +3,15 @@ using System;
 
 namespace AlgorithmsDotNet.Algorithms.Graphs
 {
-    public class TransposeGraph<TVertex> : IGraphTransformAlgorithm<TVertex>
-        where TVertex : IComparable<TVertex>, IEquatable<TVertex>
+    public static class TransposeGraph
     {
-        public static IGraphTransformAlgorithm<TVertex> Algorithm => new TransposeGraph<TVertex>();
-
         /// <summary>
         /// Return a new graph with the edges reversed
         /// </summary>
         /// <param name="inputGraph"></param>
         /// <returns></returns>
-        public IGraph<TVertex> Execute(IGraph<TVertex> inputGraph)
+        public static IGraph<TVertex> Transpose<TVertex>(this IGraph<TVertex> inputGraph)
+            where TVertex : IComparable<TVertex>, IEquatable<TVertex>
         {
             var transpose = inputGraph.CreateEmptyGraph();
             transpose.AddVertices(inputGraph.Vertices);
