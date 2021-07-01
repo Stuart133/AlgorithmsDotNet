@@ -20,7 +20,46 @@ namespace AlgorithmsDotNet.Tests.DataStructures.Trees
             // Assert
             Array.Sort(_data);
             var treeWalk = tree.InOrderWalk().ToList();
-            Assert.Equal(treeWalk, _data);
+            Assert.Equal(_data, treeWalk);
+        }
+
+        [Fact]
+        public void Max_ReturnsMaxValue()
+        {
+            // Arrange
+            var tree = new BinarySearchTree<int>(_data);
+
+            // Act
+            var max = tree.Max();
+
+            // Assert
+            Assert.Equal(_data.Max(), max);
+        }
+
+        [Fact]
+        public void Min_ReturnsMaxValue()
+        {
+            // Arrange
+            var tree = new BinarySearchTree<int>(_data);
+
+            // Act
+            var min = tree.Min();
+
+            // Assert
+            Assert.Equal(_data.Min(), min);
+        }
+
+        [Fact]
+        public void Successor_Returns_SuccessorValue()
+        {
+            // Arrange
+            var tree = new BinarySearchTree<int>(_data);
+
+            // Act
+            var next = tree.Successor(234);
+
+            // Assert
+            Assert.Equal(524, next);
         }
     }
 }

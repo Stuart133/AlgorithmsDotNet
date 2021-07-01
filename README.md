@@ -11,11 +11,11 @@ A generic algorithms and data structures library written entirely in C#. This is
 - Heap
   - Binary Min
   - Binary Max
+- Trees
+  - Binary Search Trees
 
 ### In Progress
 
-- Trees
-  - Binary Search Trees
 
 ### Planned
 
